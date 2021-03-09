@@ -1,16 +1,24 @@
 import React,{useState} from 'react'
 import {Switch, Grid, Paper, Typography, Button} from '@material-ui/core';
 import {ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
 function App() {
   const [darkMode, setDarkMode]= useState(false);
   
-  const theme= createMuiTheme({
+  const darkTheme = createMuiTheme({
     palette:{
-      type: darkMode ? "dark": "light",
-    }
+      type:'dark',
+    },
   });
+ const lightTheme = createMuiTheme({
+   palette:{
+     primary:green,
+     secondary:green,
+   }
+ })
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
     <Paper style={{height:'100vh'}}>
     <Grid container direction="column">
       <Typography variant="h1">This is my App!</Typography>
